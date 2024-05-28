@@ -5,60 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Data Service</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <style>
+      .form-label {
+        font-weight: bold;
+      }
+      .table th, .table td {
+        vertical-align: middle;
+      }
+    </style>
   </head>
   <body class="bg-light">
     <main class="container">
-       <!-- START FORM -->
-       <form action='' method='post'>
-        <div class="my-3 p-3 bg-body rounded shadow-sm">
-            <div class="mb-3 row">
-                <label for="nim" class="col-sm-2 col-form-label">NIM</label>
-                <div class="col-sm-10">
-                    <input type="number" class="form-control" name='nim' id="nim">
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="nama" class="col-sm-2 col-form-label">Nama</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name='nama' id="nama">
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="jurusan" class="col-sm-2 col-form-label">Jurusan</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name='jurusan' id="jurusan">
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="jurusan" class="col-sm-2 col-form-label"></label>
-                <div class="col-sm-10"><button type="submit" class="btn btn-primary" name="submit">SIMPAN</button></div>
-            </div>
-          </form>
-        </div>
-        <!-- AKHIR FORM -->
+      
         
         <!-- START DATA -->
-        <div class="my-3 p-3 bg-body rounded shadow-sm">
+        <div class="my-4 p-4 bg-white rounded shadow-sm">
                 <!-- FORM PENCARIAN -->
                 <div class="pb-3">
                   <form class="d-flex" action="" method="get">
-                      <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}" placeholder="Masukkan kata kunci" aria-label="Search">
+                      <input class="form-control me-2" type="search" name="katakunci" value="{{ Request::get('katakunci') }}" placeholder="Masukkan kata kunci" aria-label="Search">
                       <button class="btn btn-secondary" type="submit">Cari</button>
                   </form>
                 </div>
                 
                 <!-- TOMBOL TAMBAH DATA -->
-                <div class="pb-3">
+                <div class="pb-3 text-end">
                   <a href='' class="btn btn-primary">+ Tambah Data</a>
                 </div>
           
-                <table class="table table-striped">
+                <table class="table table-striped table-hover">
                     <thead>
                         <tr>
                             <th class="col-md-1">No</th>
-                            <th class="col-md-3">NIM</th>
-                            <th class="col-md-4">Nama</th>
-                            <th class="col-md-2">Jurusan</th>
+                            <th class="col-md-3">Kode Pelanggan</th>
+                            <th class="col-md-4">Nama Pelanggan</th>
+                            <th class="col-md-2">Nama Layanan</th>
+                            <th class="col-md-2">Tipe iPhone</th>
+                            <th class="col-md-2">Durasi</th>
                             <th class="col-md-2">Aksi</th>
                         </tr>
                     </thead>
@@ -66,16 +49,17 @@
                         <tr>
                             <td>1</td>
                             <td>1001</td>
-                            <td>Ani</td>
-                            <td>Ilmu Komputer</td>
+                            <td>Pavo</td>
+                            <td>full service keluar dalam</td>
+                            <td>iPhone XXX</td>
+                            <td>2 hari</td>
                             <td>
                                 <a href='' class="btn btn-warning btn-sm">Edit</a>
-                                <a href='' class="btn btn-danger btn-sm">Del</a>
+                                <a href='' class="btn btn-danger btn-sm">Hapus</a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-               
           </div>
           <!-- AKHIR DATA -->
     </main>
