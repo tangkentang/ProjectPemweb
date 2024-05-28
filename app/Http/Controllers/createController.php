@@ -8,6 +8,6 @@ class createController extends Controller
 {
     public function index()
     {
-        return view('service-iphone');
+        return view('create');
     }
 }
