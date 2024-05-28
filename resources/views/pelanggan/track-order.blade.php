@@ -140,7 +140,7 @@
                 <input type="text" placeholder="Search Your Order">
                 <button type="button">Search</button>
             </div>
-            <h3>10 Last Transaction</h3>
+            <h3>10 Last Transactions</h3>
             <table>
                 <thead>
                     <tr>
