@@ -5,21 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Data Service</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <style>
-      .form-label {
-        font-weight: bold;
-      }
-      .table th, .table td {
-        vertical-align: middle;
-      }
-    </style>
   </head>
   <body class="bg-light">
     <main class="container">
-      
-        
-        <!-- START DATA -->
-        <div class="my-4 p-4 bg-white rounded shadow-sm">
+ 
+   <!-- START DATA -->
+   <div class="my-4 p-4 bg-white rounded shadow-sm">
                 <!-- FORM PENCARIAN -->
                 <div class="pb-3">
                   <form class="d-flex" action="" method="get">
@@ -41,7 +32,6 @@
                             <th class="col-md-4">Nama Pelanggan</th>
                             <th class="col-md-2">Nama Layanan</th>
                             <th class="col-md-2">Tipe iPhone</th>
-                            <th class="col-md-2">Durasi</th>
                             <th class="col-md-2">Aksi</th>
                         </tr>
                     </thead>
@@ -49,10 +39,9 @@
                         <tr>
                             <td>1</td>
                             <td>1001</td>
-                            <td>Pavo</td>
-                            <td>full service keluar dalam</td>
-                            <td>iPhone XXX</td>
-                            <td>2 hari</td>
+                            <td>Ani</td>
+                            <td>Ilmu Komputer</td>
+                            <td>iPhone X</td>
                             <td>
                                 <a href='' class="btn btn-warning btn-sm">Edit</a>
                                 <a href='' class="btn btn-danger btn-sm">Hapus</a>
