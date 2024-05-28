@@ -19,7 +19,7 @@
       
  
  <!-- START FORM -->
- <form action='/admin' method='post'class="my-4 p-4 bg-white rounded shadow-sm">
+ <form action='{{ url ('mahasiswa')}}' method='post'class="my-4 p-4 bg-white rounded shadow-sm">
             <h4 class="mb-4">Tambah Data Pelanggan</h4>
             @csrf
             <div class="mb-3 row">

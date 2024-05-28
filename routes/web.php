@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\mahasiswaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,5 +23,5 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/service-iphone', [App\Http\Controllers\ServiceController::class, 'index'])->name('service-iphone');
 Route::get('/contact-us', [App\Http\Controllers\ContactController::class, 'index'])->name('contact-us');
 Route::get('/track-order', [App\Http\Controllers\TrackController::class, 'index'])->name('track-order');
-Route::resource('mahasiswa', mahasiswaController::class);
+Route::resource('admin1',adminController::class);
 // Route::get('/create', [App\Http\Controllers\createController::class, 'index'])->name('create');
