@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class pemweb extends Model
 {
     use HasFactory;
+    protected $fillable = ['kode','nama','layanan','tipe','durasi'];
+    protected $table = 'pemweb';
+    public $timestamps = false;
+
 }

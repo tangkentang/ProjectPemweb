@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\pemweb;
 use Illuminate\Http\Request;
 
-class mahasiswaController extends Controller
+class admin1Controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,8 @@ class mahasiswaController extends Controller
      */
     public function index()
     {
-        return view('mahasiswa.index');
+        $data = pemweb::orderBy('nama', 'DESC')->paginate(5);
+        return view('admin1.index')->with('data', $data);
     }
 
     /**
@@ -23,7 +25,7 @@ class mahasiswaController extends Controller
      */
     public function create()
     {
-        return view('mahasiswa.create');
+        return view('admin1.create');
     }
 
     /**
@@ -34,7 +36,31 @@ class mahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required|',
+            'layanan' => 'required',
+            'tipe' => 'required',
+            'durasi' => 'required',
+        ],[
+            'nama.required' => 'Kolom nama wajib diisi!',
+            'layanan.required' => 'Kolom Layanan wajib diisi!',
+            'tipe.required' => 'Kolom nama Tipe diisi!',
+            'durasi.required' => 'Kolom Durasi wajib diisi!',
+            
+        ]);
+
+        $kode = bin2hex(random_bytes(4));
+        $data = [
+            'kode' =>$kode,
+            'nama' => $request->nama,
+            'layanan' => $request->layanan,
+            'tipe' => $request->tipe,
+            'durasi' => $request->durasi,
+        ];
+        pemweb::create($data);
+        return redirect()->to('admin1')->with('success','Berhasil menambahkan data');
+        
+        
     }
 
     /**
@@ -56,7 +82,8 @@ class mahasiswaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = pemweb::where('nama',$id)->first();
+        return view('admin1.edit')->with('data',$data);
     }
 
     /**
