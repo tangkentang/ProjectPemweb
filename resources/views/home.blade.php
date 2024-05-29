@@ -45,13 +45,19 @@
             padding-right: 50px;
         }
         .left-content h1 {
-            font-size: 36px;
+            font-size: 25px;
             margin-bottom: 20px;
         }
         .left-content p {
+            font-size: 36px;
+            margin-bottom: 40px;
+            max-width: 50%;
+        }
+        .left-content p1 {
             font-size: 18px;
             margin-bottom: 40px;
         }
+        
         .left-content .buttons {
             display: flex;
             gap: 20px;
@@ -87,12 +93,13 @@
         <a href="/" class="active">Home</a>
         <a href="{{ route('service-iphone') }}">Service iPhone</a>
         <a href="{{ route('contact-us') }}">Contact Us</a>
-        <a href="#">Create An Account</a>
+        <a href="/track-order">Track Order</a>
     </div>
     <div class="container">
         <div class="left-content">
             <h1>Halo, Selamat datang</h1>
-            <p>Pengerjaan cepat memperbaiki masalah iPhone anda. Membuat iPhone Anda aktif kembali di hari yang sama.</p>
+            <p>Pengerjaan cepat memperbaiki masalah iPhone anda.</p>
+            <p1>Membuat iPhone Anda aktif kembali dengan waktu yang cepat.</p1>
             <div class="buttons">
                 <a href="{{ route('service-iphone') }}" class="btn-primary">Service iPhone</a>
                 <a href="/contact-us" class="btn-secondary">Konsultasi</a>

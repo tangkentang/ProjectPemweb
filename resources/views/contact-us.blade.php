@@ -109,7 +109,7 @@
         <div class="contact-container">
             <div class="contact-info">
                 <h3>Contact Information</h3>
-                <p>Say something to start a live chat!</p>
+                <p>Say something to start a chat!</p>
                 <p><strong>Phone:</strong> +62 812 6778 3531</p>
                 <p><strong>Email:</strong> hernandodtha@student.ub.ac.id</p>
                 <p><strong>Address:</strong> Fakultas Ilmu Komputer, Universitas Brawijaya</p>

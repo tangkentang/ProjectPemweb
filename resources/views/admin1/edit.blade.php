@@ -38,9 +38,10 @@
   </div>
  </div>
  @endif
- <form action='{{ url ('admin1')}}' method='post'class="my-4 p-4 bg-white rounded shadow-sm">
+ <form action='{{ url ('admin1/'.$data->nama)}}' method='post'class="my-4 p-4 bg-white rounded shadow-sm">
             <h4 class="mb-4">Tambah Data Pelanggan</h4>
             @csrf
+            @method('PUT') 
             <div class="mb-3 row">
                 <label for="nim" class="col-sm-2 col-form-label form-label">Nama</label>
                 <div class="col-sm-10">
@@ -62,7 +63,7 @@
             <div class="mb-3 row">
                 <label for="nama" class="col-sm-2 col-form-label form-label">Durasi</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name='durasi' value="{{$data->durasi}}" id="durasi">
+                    <input type="text" class="form-control" name='durasi' value="{{$data->durasi  }}" id="durasi">
                 </div>
             </div>
             <div class="mb-3 row">

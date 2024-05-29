@@ -12,9 +12,21 @@ class admin1Controller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = pemweb::orderBy('nama', 'DESC')->paginate(5);
+        $katakunci = $request->katakunci;
+        $baris = 5;
+        if(strlen($katakunci)){
+            $data = pemweb::where('nama','like',"%$katakunci%")
+                    ->orWhere('kode','like',"%$katakunci%")
+                    ->orWhere('layanan','like',"%$katakunci%")
+                    ->orWhere('tipe','like',"%$katakunci%")
+                    ->orWhere('durasi','like',"%$katakunci%")
+                    ->paginate($baris);
+            }else{
+                $data = pemweb::orderBy('nama', 'DESC')->paginate($baris);
+            }
+        
         return view('admin1.index')->with('data', $data);
     }
 
@@ -95,7 +107,28 @@ class admin1Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required|',
+            'layanan' => 'required',
+            'tipe' => 'required',
+            'durasi' => 'required',
+        ],[
+            'nama.required' => 'Kolom nama wajib diisi!',
+            'layanan.required' => 'Kolom Layanan wajib diisi!',
+            'tipe.required' => 'Kolom nama Tipe diisi!',
+            'durasi.required' => 'Kolom Durasi wajib diisi!',
+            
+        ]);
+
+        
+        $data = [
+            'nama' => $request->nama,
+            'layanan' => $request->layanan,
+            'tipe' => $request->tipe,
+            'durasi' => $request->durasi,
+        ];
+        pemweb::where('nama',$id)->update($data);
+        return redirect()->to('admin1')->with('success','Data Updated Successfully');
     }
 
     /**
@@ -106,6 +139,7 @@ class admin1Controller extends Controller
      */
     public function destroy($id)
     {
-        //
+        pemweb::where('nama',$id)->delete();
+        return redirect()->to('admin1')->with('success','Data Deleted');
     }
 }

@@ -8,17 +8,21 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
             margin: 0;
             padding: 0;
-            background-color: #ffffff;
         }
-        .container title {
-          font-weight: bold;
-          font-size: 30px;
-
+        .container .title {
+            font-weight: bold;
+            font-size: 30px;
+            margin-bottom: 20px;
         }
         .container {
             padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-top: 40px;
         }
         .table-wrapper {
             margin-top: 20px;
@@ -29,13 +33,13 @@
             font-weight: bold;
         }
         .table tbody tr {
-            background-color: #fdfdfd;
+            background-color: #ffffff;
         }
         .btn-edit {
-          background-color: #333;
-          border-color: black;
-          color: white;
-          border-radius: 10px;
+            background-color: #333;
+            border-color: black;
+            color: white;
+            border-radius: 10px;
         }
         .btn-edit:hover {
             background-color: #e0a800;
@@ -62,6 +66,7 @@
         .btn-primary {
             background-color: #333;
             border-color: black;
+            border-radius: 10px;
         }
         .btn-primary:hover {
             background-color: #555;
@@ -69,16 +74,17 @@
         }
     </style>
 </head>
-<div class="container tittle">
-  <h1>iRepair - admin</h1>
-</div>
-
 <body>
     <div class="container">
+        <div class="title">
+            <h1>iRepair - Admin</h1>
+        </div>
         <div class="search-bar">
-            <input type="text" class="form-control" placeholder="Masukkan kata kunci">
-            <button class="btn btn-secondary">Cari</button>
-            <a href="{{ url ('admin1/create')}}" class="btn btn-primary ml-2">+ Tambah Data</a>
+            <form class="d-flex" action="{{url ('admin1')}}" method="get">
+                <input class="form-control" type="search" name="katakunci" value="{{Request::get('katakunci')}}" placeholder="Masukkan kata kunci" aria-label="Search">
+                <button class="btn btn-secondary ml-2">Cari</button>
+            </form>
+            <a href="{{ url ('admin1/create') }}" class="btn btn-primary">+ Tambah Data</a>
         </div>
         <div class="table-wrapper">
             <table class="table table-bordered">
@@ -94,27 +100,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                  <?php $i = $data->firstItem(); ?>
-                  @foreach ( $data as $item )
-                  <tr>
-                        <td>{{$i}}</td>
-                        <td>{{$item->kode}}</td>
-                        <td>{{$item->nama}}</td>
-                        <td>{{$item->layanan}}</td>
-                        <td>{{$item->tipe}}</td>
-                        <td>{{$item->durasi}}</td>
+                    <?php $i = $data->firstItem(); ?>
+                    @foreach ($data as $item)
+                    <tr>
+                        <td>{{ $i }}</td>
+                        <td>{{ $item->kode }}</td>
+                        <td>{{ $item->nama }}</td>
+                        <td>{{ $item->layanan }}</td>
+                        <td>{{ $item->tipe }}</td>
+                        <td>{{ $item->durasi }}</td>
                         <td>
-                            <a href="{{url ('admin1/'.$item->nama.'/edit')}}" class="btn btn-edit btn-sm">Edit</a>
-                            <a href="#" class="btn btn-delete btn-sm">Delete</a>
+                            <a href="{{ url('admin1/'.$item->nama.'/edit') }}" class="btn btn-edit btn-sm">Edit</a>
+                            <form onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" action="{{ url('admin1/'.$item->nama) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" name="submit" class="btn btn-delete btn-sm">Delete</button>
+                            </form>
                         </td>
                     </tr>
                     <?php $i++; ?>
-                  
-                  @endforeach
-                    
+                    @endforeach
                 </tbody>
             </table>
-            {{ $data->links()}}
+            {{ $data->withQueryString()->links() }}
         </div>
     </div>
 
