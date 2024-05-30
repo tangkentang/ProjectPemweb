@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Mail;
 
 class messageController extends Controller
 {
@@ -13,7 +14,11 @@ class messageController extends Controller
      */
     public function index()
     {
-        return view('admin1.message');
+        // Retrieve all messages from the mail table
+        $data=mail::paginate(5);
+
+        // Return the view with the messages data
+        return view('admin1.message', ['data' => $data]);
     }
 
     /**

@@ -55,7 +55,7 @@
             color: white;
         }
         .btn-message {
-            background-color: black;
+            background-color: #333;
             color: #f8f9fa;
             border-radius: 10px;
         }

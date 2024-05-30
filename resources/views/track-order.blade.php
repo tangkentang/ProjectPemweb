@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Track Your Order - iRepair</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Existing CSS code */
         body {
@@ -136,7 +137,7 @@
                 <button type="button" id="search-button">Search</button>
                 <button type="button" id="reset-button" class="reset-button">Reset</button>
             </div>
-            <h3>10 Last Transactions</h3>
+            <h3>5 Last Transactions</h3>
             <table id="order-table">
                 <thead>
                     <tr>

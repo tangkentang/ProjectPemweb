@@ -17,7 +17,7 @@ class TrackController extends Controller
                          ->orWhere('tipe', 'LIKE', "%{$query}%")
                          ->paginate(5);
         } else {
-            $data = pemweb::paginate(5);
+            $data=pemweb::paginate(5);
         }
 
         return view('track-order', ['data' => $data]);

@@ -45,10 +45,23 @@
             font-size: 30px;
             margin-bottom: 20px;
         }
+        .btn-back {
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            border-color: #333;
+        }
+        .btn-back:hover {
+            background-color: #555;
+            border-color: #555;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <button class="btn-back" onclick="window.history.back();">Back</button>
         <div class="title">
             <h1>Admin - View Messages</h1>
         </div>
@@ -60,21 +73,23 @@
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Email</th>
+                        <th>Phone Number</th>
                         <th>Message</th>
-                        <th>Reply</th>
                     </tr>
                 </thead>
                 <tbody>
-                     <tr>
-                                    <td>1</td>
-                                    <td>papo</td>
-                                    <td>tol</td>
-                                    <td>papo@gmail.com</td>
-                                    <td>keren bang</td>
-                                    <td>terimakasih </td>
-                                    
-                                  </tr>
-                    
+                <?php $i = $data->firstItem(); ?>
+                    @foreach ($data as $item)
+                        <tr>
+                            <td>{{ $i }}</td>
+                            <td>{{ $item->firstName }}</td>
+                            <td>{{ $item->lastName }}</td>
+                            <td>{{ $item->email }}</td>
+                            <td>{{ $item->noPhone }}</td>
+                            <td>{{ $item->msg}}</td>
+                        </tr>
+                    <?php $i++; ?>
+                    @endforeach
                 </tbody>
             </table>
         </div>
