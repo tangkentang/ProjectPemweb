@@ -63,12 +63,19 @@
 <body>
     <div class="login-container">
         <h1>Login</h1>
-        <form action=" " method="post">
+        <form action="{{ route('login') }}" method="post">
             @csrf
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
             <input type="submit" value="Login">
         </form>
+        @if ($errors->any())
+            <div class="error-message">
+                @foreach ($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
         @if (session('error'))
             <div class="error-message">{{ session('error') }}</div>
         @endif
