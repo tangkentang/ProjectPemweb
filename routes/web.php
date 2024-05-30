@@ -4,6 +4,7 @@ use App\Http\Controllers\admin1Controller;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\mahasiswaController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,12 @@ Route::resource('admin1',admin1Controller::class);
 Route::get('/message', [App\Http\Controllers\messageController::class, 'index'])->name('message');
 // Route::get('/admin-login', [App\Http\Controllers\loginController::class, 'index'])->name('admin-login');
 // Route::get('/create', [App\Http\Controllers\createController::class, 'index'])->name('create');
-Route::get('/login', 'AuthController@showLoginForm')->name('login');
-Route::post('/login', 'AuthController@login');
+// Route::get('/login', 'AuthController@showLoginForm')->name('login');
+// Route::post('/login', 'AuthController@login');
+// Route::get('/login', [App\Http\Controllers\loginController::class, 'index'])->name('login');
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+Route::post('/login', [AuthController::class, 'login']);
 

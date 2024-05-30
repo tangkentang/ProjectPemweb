@@ -103,7 +103,7 @@
 <body>
     <div class="navbar">
         <div class="navbar-left">
-            <a href="{{ url('admin1/login') }}" class="btn-admin-login">
+            <a href="{{ url('login') }}" class="btn-admin-login">
                 <img src="{{ asset('images/admin-icon.png') }}" alt="Admin Login">
             </a>
             <div class="navbar-title">
