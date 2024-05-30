@@ -28,5 +28,6 @@ Route::resource('admin1',admin1Controller::class);
 Route::get('/message', [App\Http\Controllers\messageController::class, 'index'])->name('message');
 // Route::get('/admin-login', [App\Http\Controllers\loginController::class, 'index'])->name('admin-login');
 // Route::get('/create', [App\Http\Controllers\createController::class, 'index'])->name('create');
-Route::get('/admin-login', 'loginController@showLoginForm')->name('admin-login');
-Route::post('/admin-login', 'loginController@login');
+Route::get('/login', 'AuthController@showLoginForm')->name('login');
+Route::post('/login', 'AuthController@login');
+
