@@ -163,6 +163,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $data->withQueryString()->links() }}
         </section>
     </div>
 </main>
