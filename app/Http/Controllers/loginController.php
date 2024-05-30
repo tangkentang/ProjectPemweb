@@ -6,15 +6,22 @@ use Illuminate\Http\Request;
 
 class loginController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function showLoginForm()
     {
-        return view('admin1.admin-login');
+        return view('admin-login');
     }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->only('username', 'password');
+
+        if ($credentials['username'] == 'admin' && $credentials['password'] == '1234') {
+            return redirect()->route('admin1');
+        } else {
+            return redirect()->route('login')->with('error', 'Invalid username or password');
+        }
+    }
+
 
     /**
      * Show the form for creating a new resource.
