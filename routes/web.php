@@ -26,4 +26,5 @@ Route::get('/contact-us', [App\Http\Controllers\ContactController::class, 'index
 Route::get('/track-order', [App\Http\Controllers\TrackController::class, 'index'])->name('track-order');
 Route::resource('admin1',admin1Controller::class);
 Route::get('/message', [App\Http\Controllers\messageController::class, 'index'])->name('message');
+Route::get('/admin-login', [App\Http\Controllers\loginController::class, 'index'])->name('admin-login');
 // Route::get('/create', [App\Http\Controllers\createController::class, 'index'])->name('create');

@@ -17,21 +17,23 @@
             justify-content: space-between;
             padding: 20px;
             background-color: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
         }
         .navbar a {
             text-decoration: none;
             color: black;
-            margin: 0 10px;
+            margin: 0 20px;
+            font-size: 17px;
         }
         .navbar a.active {
             font-weight: bold;
         }
-        .navbar .tittle {
-            font-size: 20px;
+        .navbar .navbar-title {
+            font-size: 2px; /* Adjusted font size */
             color: black;
             font-weight: bold;
             margin-top: 0;
+            margin-left: 10px;
         }
         .container {
             display: flex;
@@ -43,6 +45,10 @@
         .left-content {
             flex: 1;
             padding-right: 50px;
+            margin-bottom: 40px;
+            padding-left: 30px;
+            width: 50%;
+            max-width: 50%;
         }
         .left-content h1 {
             font-size: 25px;
@@ -75,6 +81,11 @@
             background-color: #cccccc;
             color: black;
         }
+        .btn-admin-login img {
+            border-radius: 5px;
+            width: 50px;
+            height: auto;
+        }
         .right-content {
             flex: 1;
             text-align: center;
@@ -83,17 +94,28 @@
             max-width: 100%;
             height: auto;
         }
+        .navbar-left {
+            display: flex;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
     <div class="navbar">
-        <div class="tittle">
-            <a href="/">iRepair</a>
+        <div class="navbar-left">
+            <a href="{{ url('admin-login') }}" class="btn-admin-login">
+                <img src="{{ asset('images/admin-icon.png') }}" alt="Admin Login">
+            </a>
+            <div class="navbar-title">
+                <a href="/">iRepair</a>
+            </div>
         </div>
-        <a href="/" class="active">Home</a>
-        <a href="{{ route('service-iphone') }}">Service iPhone</a>
-        <a href="{{ route('contact-us') }}">Contact Us</a>
-        <a href="/track-order">Track Order</a>
+        <div>
+            <a href="/" class="active">Home</a>
+            <a href="{{ route('service-iphone') }}">Service iPhone</a>
+            <a href="{{ route('contact-us') }}">Contact Us</a>
+            <a href="/track-order">Track Order</a>
+        </div>
     </div>
     <div class="container">
         <div class="left-content">

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class messageController extends Controller
+class loginController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class messageController extends Controller
      */
     public function index()
     {
-        return view('admin1.message');
+        return view('admin1.admin-login');
     }
 
     /**
