@@ -16,7 +16,7 @@ class AuthController extends Controller
         $credentials = $request->only('username', 'password');
 
         if ($credentials['username'] == 'admin' && $credentials['password'] == '1234') {
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('admin1');
         } else {
             return redirect()->route('login')->with('error', 'Invalid username or password');
         }
