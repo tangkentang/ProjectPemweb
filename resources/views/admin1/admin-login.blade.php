@@ -63,7 +63,8 @@
 <body>
     <div class="login-container">
         <h1>Login</h1>
-        <form action="login.php" method="post">
+        <form action="admin1" method="post">
+            @csrf
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
             <input type="submit" value="Login">
