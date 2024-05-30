@@ -25,4 +25,5 @@ Route::get('/service-iphone', [App\Http\Controllers\ServiceController::class, 'i
 Route::get('/contact-us', [App\Http\Controllers\ContactController::class, 'index'])->name('contact-us');
 Route::get('/track-order', [App\Http\Controllers\TrackController::class, 'index'])->name('track-order');
 Route::resource('admin1',admin1Controller::class);
+Route::get('/message', [App\Http\Controllers\messageController::class, 'index'])->name('message');
 // Route::get('/create', [App\Http\Controllers\createController::class, 'index'])->name('create');

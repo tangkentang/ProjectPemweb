@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+]<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -54,10 +54,20 @@
             background-color: red;
             color: white;
         }
+        .btn-message {
+            background-color: black;
+            color: #f8f9fa;
+            border-radius: 10px;
+        }
+        .btn-message:hover {
+            background-color: #555;
+            color: white;
+        }
         .search-bar {
             display: flex;
             justify-content: space-between;
             margin-bottom: 20px;
+            align-items: center;
         }
         .search-bar input {
             flex: 1;
@@ -75,16 +85,18 @@
     </style>
 </head>
 <body>
+<div>
     <div class="container">
         <div class="title">
             <h1>iRepair - Admin</h1>
         </div>
         <div class="search-bar">
-            <form class="d-flex" action="{{url ('admin1')}}" method="get">
+            <a href="{{ url('message') }}" class="btn btn-message">Message</a>
+            <form class="d-flex" action="{{url('admin1')}}" method="get">
                 <input class="form-control" type="search" name="katakunci" value="{{Request::get('katakunci')}}" placeholder="Masukkan kata kunci" aria-label="Search">
                 <button class="btn btn-secondary ml-2">Cari</button>
             </form>
-            <a href="{{ url ('admin1/create') }}" class="btn btn-primary">+ Tambah Data</a>
+            <a href="{{ url('admin1/create') }}" class="btn btn-primary">+ Tambah Data</a>
         </div>
         <div class="table-wrapper">
             <table class="table table-bordered">
@@ -125,9 +137,10 @@
             {{ $data->withQueryString()->links() }}
         </div>
     </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
