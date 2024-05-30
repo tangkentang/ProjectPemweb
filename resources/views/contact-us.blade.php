@@ -91,6 +91,12 @@
             justify-content: space-around;
             margin-top: 20px;
         }
+        .map {
+  height: 400px;
+  width: 100%;
+  margin-top: 20px; /* Sesuaikan dengan kebutuhan Anda */
+}
+
     </style>
 </head>
 <body>
@@ -117,7 +123,14 @@
                     <a href="#"><img src="{{ asset('images/twitter.png') }}" alt="Twitter"></a>
                     <a href="#"><img src="{{ asset('images/instagram.png') }}" alt="Instagram"></a>
                     <a href="#"><img src="{{ asset('images/linkedin.png') }}" alt="LinkedIn"></a>
+                    <p>Our Location</p>
                 </div>
+                    </br>
+
+                
+
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.4350635499504!2d112.61242917455667!3d-7.953911729250002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78827994694b27%3A0x4eb4fed2fe1b7977!2sGedung%20A%20Fakultas%20Ilmu%20Komputer%20Universitas%20Brawijaya!5e0!3m2!1sid!2sid!4v1717095311684!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" border-radius="10px"></iframe>
+
             </div>
             <div class="contact-form">
                 <form action="#">
@@ -146,4 +159,7 @@
         </div>
     </div>
 </body>
+
+
+
 </html>

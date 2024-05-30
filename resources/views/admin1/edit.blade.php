@@ -61,7 +61,7 @@
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="nama" class="col-sm-2 col-form-label form-label">Durasi</label>
+                <label for="nama" class="col-sm-2 col-form-label form-label">Estimasi</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name='durasi' value="{{$data->durasi  }}" id="durasi">
                 </div>

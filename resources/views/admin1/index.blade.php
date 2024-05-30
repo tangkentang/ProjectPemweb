@@ -1,4 +1,4 @@
-]<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -107,7 +107,7 @@
                         <th>Nama Pelanggan</th>
                         <th>Nama Layanan</th>
                         <th>Tipe iPhone</th>
-                        <th>Durasi</th>
+                        <th>Estimasi</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>

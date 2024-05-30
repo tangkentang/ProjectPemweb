@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Mail;
 
 class contactController extends Controller
 {
@@ -34,8 +35,32 @@ class contactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validasi inputan
+        $validatedData = $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'phone_number' => 'required',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
+
+        // Buat objek Mail baru dan isi propertinya dengan data yang diterima dari formulir
+        $mail = new Mail();
+        $mail->first_name = $validatedData['first_name'];
+        $mail->last_name = $validatedData['last_name'];
+        $mail->email = $validatedData['email'];
+        $mail->phone_number = $validatedData['phone_number'];
+        $mail->subject = $validatedData['subject'];
+        $mail->message = $validatedData['message'];
+
+        // Simpan data ke dalam database
+        $mail->save();
+
+        // Redirect ke halaman yang diinginkan setelah berhasil mengirim pesan
+        return redirect()->route('contact-us')->with('success', 'Message sent successfully!');
     }
+
 
     /**
      * Display the specified resource.
