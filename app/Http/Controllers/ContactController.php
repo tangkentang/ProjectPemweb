@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Mail;
+use App\Models\mail;
 
 class contactController extends Controller
 {
@@ -35,30 +35,26 @@ class contactController extends Controller
      */
     public function store(Request $request)
     {
-        // Validasi inputan
-        $validatedData = $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required',
-            'phone_number' => 'required',
-            'subject' => 'required',
-            'message' => 'required',
+        // Validate the request data
+        $request->validate([
+            'firstName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'noPhone' => 'required|string|max:255',
+            'msg' => 'required|string',
         ]);
 
-        // Buat objek Mail baru dan isi propertinya dengan data yang diterima dari formulir
-        $mail = new Mail();
-        $mail->first_name = $validatedData['first_name'];
-        $mail->last_name = $validatedData['last_name'];
-        $mail->email = $validatedData['email'];
-        $mail->phone_number = $validatedData['phone_number'];
-        $mail->subject = $validatedData['subject'];
-        $mail->message = $validatedData['message'];
+        // Create a new mail entry
+        mail::create([
+            'firstName' => $request->firstName,
+            'lastName' => $request->lastName,
+            'email' => $request->email,
+            'noPhone' => $request->noPhone,
+            'msg' => $request->msg,
+        ]);
 
-        // Simpan data ke dalam database
-        $mail->save();
-
-        // Redirect ke halaman yang diinginkan setelah berhasil mengirim pesan
-        return redirect()->route('contact-us')->with('success', 'Message sent successfully!');
+        // Redirect with success message
+        return redirect()->route('contact-us')->with('success', 'Your message has been sent successfully!');
     }
 
 

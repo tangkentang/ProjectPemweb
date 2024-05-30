@@ -92,11 +92,10 @@
             margin-top: 20px;
         }
         .map {
-  height: 400px;
-  width: 100%;
-  margin-top: 20px; /* Sesuaikan dengan kebutuhan Anda */
-}
-
+            height: 400px;
+            width: 100%;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -111,6 +110,11 @@
     </div>
     <div class="container">
         <h2>Contact Us</h2>
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <p>Any question or remarks? Just write us a message!</p>
         <div class="contact-container">
             <div class="contact-info">
@@ -125,41 +129,26 @@
                     <a href="#"><img src="{{ asset('images/linkedin.png') }}" alt="LinkedIn"></a>
                     <p>Our Location</p>
                 </div>
-                    </br>
-
-                
-
+                <br>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.4350635499504!2d112.61242917455667!3d-7.953911729250002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78827994694b27%3A0x4eb4fed2fe1b7977!2sGedung%20A%20Fakultas%20Ilmu%20Komputer%20Universitas%20Brawijaya!5e0!3m2!1sid!2sid!4v1717095311684!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" border-radius="10px"></iframe>
-
             </div>
             <div class="contact-form">
-                <form action="#">
-                    <label for="first_name">First Name</label>
-                    <input type="text" id="first_name" name="first_name" required>
-                    <label for="last_name">Last Name</label>
-                    <input type="text" id="last_name" name="last_name" required>
+                <form action="{{ route('contact.store') }}" method="POST">
+                    @csrf
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required>
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" required>
-                    <label for="phone_number">Phone Number</label>
-                    <input type="text" id="phone_number" name="phone_number" required>
-                    <label>Select Subject:</label>
-                    <input type="radio" id="lcd_service" name="subject" value="LCD Service">
-                    <label for="lcd_service">LCD Service</label>
-                    <input type="radio" id="battery_service" name="subject" value="Battery Service">
-                    <label for="battery_service">Battery Service</label>
-                    <input type="radio" id="housing_service" name="subject" value="Housing Service">
-                    <label for="housing_service">Housing Service</label>
-                    <input type="radio" id="spare_part" name="subject" value="Spare Part">
-                    <label for="spare_part">Spare Part</label>
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="4" required></textarea>
+                    <label for="noPhone">Phone Number</label>
+                    <input type="text" id="noPhone" name="noPhone" required>
+                    <label for="msg">Message</label>
+                    <textarea id="msg" name="msg" rows="4" required></textarea>
                     <button type="submit">Send Message</button>
                 </form>
             </div>
         </div>
     </div>
 </body>
-
-
-
 </html>
