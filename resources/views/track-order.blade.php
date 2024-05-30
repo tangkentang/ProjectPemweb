@@ -13,6 +13,7 @@
             padding: 0;
             background-color: #f4f4f4;
             color: #333;
+            animation: fadeIn 1s ease-in-out;
         }
         header, footer {
             background-color: #333;
@@ -26,6 +27,7 @@
             padding: 20px;
             background-color: white;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: slideDown 1s ease-in-out;
         }
         .navbar a {
             text-decoration: none;
@@ -38,7 +40,6 @@
             font-weight: bold;
             margin-top: 0;
         }
-        
         main {
             padding: 20px;
             text-align: center;
@@ -53,12 +54,14 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1.5s ease-in-out;
         }
         .search-bar {
             margin-bottom: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
+            animation: fadeInUp 1.5s ease-in-out;
         }
         .search-bar input[type="text"] {
             width: 300px;
@@ -66,6 +69,10 @@
             border: 1px solid #ccc;
             border-radius: 4px 0 0 4px;
             outline: none;
+            transition: box-shadow 0.3s;
+        }
+        .search-bar input[type="text"]:focus {
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
         }
         .search-bar button {
             padding: 10px 20px;
@@ -74,6 +81,7 @@
             color: white;
             border-radius: 0 4px 4px 0;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
         .search-bar button:hover {
             background-color: #555;
@@ -82,6 +90,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            animation: fadeInUp 1.5s ease-in-out;
         }
         table, th, td {
             border: 1px solid #ccc;
@@ -108,14 +117,27 @@
             color: white;
             border-radius: 20px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
         .reset-button:hover {
             background-color: #777;
         }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
     </style>
 </head>
 <body>
-<div class="navbar">
+    <div class="navbar">
         <div class="tittle">
             <a href="/">iRepair</a>
         </div>
@@ -124,68 +146,65 @@
         <a href="{{ route('contact-us') }}" class="active">Contact Us</a>
         <a href="/track-order">Tracking Order</a>
     </div>   
-<header>
-    
-</header>
-
-<main>
-    <div class="container">
-        <section class="track-order">
-            <h2>Track Your Order</h2>
-            <div class="search-bar">
-                <input type="text" id="search-input" placeholder="Search Your Order">
-                <button type="button" id="search-button">Search</button>
-                <button type="button" id="reset-button" class="reset-button">Reset</button>
-            </div>
-            <h3>5 Last Transactions</h3>
-            <table id="order-table">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Kode</th>
-                        <th>Nama Pelanggan</th>
-                        <th>Nama Layanan</th>
-                        <th>Model</th>
-                        <th>Estimasi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $i = $data->firstItem(); ?>
-                    @foreach ($data as $item)
+    <header>
+        <!-- Optional Header Content -->
+    </header>
+    <main>
+        <div class="container">
+            <section class="track-order">
+                <h2>Track Your Order</h2>
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search Your Order">
+                    <button type="button" id="search-button">Search</button>
+                    <button type="button" id="reset-button" class="reset-button">Reset</button>
+                </div>
+                <h3>5 Last Transactions</h3>
+                <table id="order-table">
+                    <thead>
                         <tr>
-                            <td>{{ $i }}</td>
-                            <td>{{ $item->kode }}</td>
-                            <td>{{ $item->nama }}</td>
-                            <td>{{ $item->layanan }}</td>
-                            <td>{{ $item->tipe }}</td>
-                            <td>{{ $item->durasi }}</td>
+                            <th>No</th>
+                            <th>Kode</th>
+                            <th>Nama Pelanggan</th>
+                            <th>Nama Layanan</th>
+                            <th>Model</th>
+                            <th>Estimasi</th>
                         </tr>
-                    <?php $i++; ?>
-                    @endforeach
-                </tbody>
-            </table>
-            {{ $data->withQueryString()->links() }}
-        </section>
-    </div>
-</main>
+                    </thead>
+                    <tbody>
+                        <?php $i = $data->firstItem(); ?>
+                        @foreach ($data as $item)
+                            <tr>
+                                <td>{{ $i }}</td>
+                                <td>{{ $item->kode }}</td>
+                                <td>{{ $item->nama }}</td>
+                                <td>{{ $item->layanan }}</td>
+                                <td>{{ $item->tipe }}</td>
+                                <td>{{ $item->durasi }}</td>
+                            </tr>
+                        <?php $i++; ?>
+                        @endforeach
+                    </tbody>
+                </table>
+                {{ $data->withQueryString()->links() }}
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 iRepair. All rights reserved.</p>
+    </footer>
 
-<footer>
-    <p>&copy; 2024 iRepair. All rights reserved.</p>
-</footer>
+    <script>
+        document.getElementById('search-button').addEventListener('click', function() {
+            const query = document.getElementById('search-input').value;
+            if (query) {
+                window.location.href = `/track-order?search=${query}`;
+            }
+        });
 
-<script>
-    document.getElementById('search-button').addEventListener('click', function() {
-        const query = document.getElementById('search-input').value;
-        if (query) {
-            window.location.href = `/track-order?search=${query}`;
-        }
-    });
-
-    document.getElementById('reset-button').addEventListener('click', function() {
-        document.getElementById('search-input').value = '';
-        window.location.href = `/track-order`;
-    });
-</script>
-
+        document.getElementById('reset-button').addEventListener('click', function() {
+            document.getElementById('search-input').value = '';
+            window.location.href = `/track-order`;
+        });
+    </script>
 </body>
 </html>

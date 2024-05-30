@@ -11,6 +11,7 @@
             margin: 0;
             padding: 0;
             background-color: #f9f9f9;
+            animation: fadeIn 1s ease-in-out;
         }
         .navbar {
             display: flex;
@@ -18,6 +19,7 @@
             padding: 20px;
             background-color: white;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: slideDown 1s ease-in-out;
         }
         .navbar a {
             text-decoration: none;
@@ -36,6 +38,7 @@
         .container {
             text-align: center;
             padding: 20px;
+            animation: fadeInUp 1.5s ease-in-out;
         }
         .contact-info, .contact-form {
             width: 45%;
@@ -43,11 +46,17 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             border-radius: 8px;
             background-color: white;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .contact-info:hover, .contact-form:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         .contact-info {
             background-color: #333;
             color: white;
             text-align: left;
+            animation: fadeInLeft 1.5s ease-in-out;
         }
         .contact-info p, .contact-info a {
             color: white;
@@ -59,9 +68,14 @@
             width: 24px;
             height: auto;
             margin: 0 5px;
+            transition: transform 0.3s;
+        }
+        .contact-info .social-icons img:hover {
+            transform: scale(1.2);
         }
         .contact-form {
             text-align: left;
+            animation: fadeInRight 1.5s ease-in-out;
         }
         .contact-form input, .contact-form textarea {
             width: 100%;
@@ -69,14 +83,10 @@
             margin: 10px 0;
             border-radius: 4px;
             border: 1px solid #ccc;
+            transition: box-shadow 0.3s;
         }
-        .contact-form input[type="radio"] {
-            width: auto;
-            margin-right: 10px;
-        }
-        .contact-form label {
-            display: block;
-            margin: 10px 0 5px;
+        .contact-form input:focus, .contact-form textarea:focus {
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
         }
         .contact-form button {
             padding: 10px 20px;
@@ -85,6 +95,10 @@
             background-color: black;
             color: white;
             cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: #333;
         }
         .contact-container {
             display: flex;
@@ -95,6 +109,26 @@
             height: 400px;
             width: 100%;
             margin-top: 20px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
         }
     </style>
 </head>
@@ -130,7 +164,7 @@
                     <p>Our Location</p>
                 </div>
                 <br>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.4350635499504!2d112.61242917455667!3d-7.953911729250002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78827994694b27%3A0x4eb4fed2fe1b7977!2sGedung%20A%20Fakultas%20Ilmu%20Komputer%20Universitas%20Brawijaya!5e0!3m2!1sid!2sid!4v1717095311684!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" border-radius="10px"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.4350635499263!2d112.61242917575228!3d-7.953911729252521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78827994694b27%3A0x4eb4fed2fe1b7977!2sGedung%20A%20Fakultas%20Ilmu%20Komputer%20Universitas%20Brawijaya!5e0!3m2!1sid!2sid!4v1717105068542!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div class="contact-form">
                 <form action="{{ route('contact.store') }}" method="POST">
