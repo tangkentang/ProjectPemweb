@@ -167,7 +167,7 @@
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.4350635499263!2d112.61242917575228!3d-7.953911729252521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78827994694b27%3A0x4eb4fed2fe1b7977!2sGedung%20A%20Fakultas%20Ilmu%20Komputer%20Universitas%20Brawijaya!5e0!3m2!1sid!2sid!4v1717105068542!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div class="contact-form">
-                <form action="{{ route('contact.store') }}" method="POST">
+                <form action="{{ route('contact.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <label for="firstName">First Name</label>
                     <input type="text" id="firstName" name="firstName" required>
@@ -178,8 +178,10 @@
                     <label for="noPhone">Phone Number</label>
                     <input type="text" id="noPhone" name="noPhone" required>
                     <label for="msg">Message</label>
-                    <textarea id="msg" name="msg" rows="4" required></textarea>
-                    <button type="submit">Send Message</button>
+    <textarea id="msg" name="msg" rows="4" required></textarea>
+    <label for="attachment">Attachment</label>
+    <input type="file" id="attachment" name="attachment" accept=".jpg,.jpeg,.png,.pdf">
+    <button type="submit">Send Message</button>
                 </form>
             </div>
         </div>

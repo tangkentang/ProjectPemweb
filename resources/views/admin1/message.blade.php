@@ -75,6 +75,7 @@
                         <th>Email</th>
                         <th>Phone Number</th>
                         <th>Message</th>
+                        <th>Attachment</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -86,7 +87,14 @@
                             <td>{{ $item->lastName }}</td>
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->noPhone }}</td>
-                            <td>{{ $item->msg}}</td>
+                            <td>{{ $item->msg }}</td>
+                            <td>
+                                @if ($item->attachment)
+                                    <a href="{{ asset('storage/' . $item->attachment) }}" target="_blank">View Attachment</a>
+                                @else
+                                    No attachment
+                                @endif
+                            </td>
                         </tr>
                     <?php $i++; ?>
                     @endforeach

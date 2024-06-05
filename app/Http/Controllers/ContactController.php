@@ -42,21 +42,30 @@ class contactController extends Controller
             'email' => 'required|string|email|max:255',
             'noPhone' => 'required|string|max:255',
             'msg' => 'required|string',
+            'attachment' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048'
         ]);
 
+        // Handle file upload
+        $attachmentPath = null;
+        if ($request->hasFile('attachment')) {
+            $attachmentPath = $request->file('attachment')->store('attachments', 'public');
+        }
+
         // Create a new mail entry
-        mail::create([
+        Mail::create([
             'firstName' => $request->firstName,
             'lastName' => $request->lastName,
             'email' => $request->email,
             'noPhone' => $request->noPhone,
             'msg' => $request->msg,
+            'attachment' => $attachmentPath,
         ]);
 
         // Redirect with success message
         return redirect()->route('contact-us')->with('success', 'Your message has been sent successfully! 
         do not forget to check your email!');
     }
+
 
 
     /**
