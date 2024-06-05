@@ -91,6 +91,7 @@
             border-collapse: collapse;
             margin-top: 20px;
             animation: fadeInUp 1.5s ease-in-out;
+            display: none; /* Initially hide the table */
         }
         table, th, td {
             border: 1px solid #ccc;
@@ -158,7 +159,7 @@
                     <button type="button" id="search-button">Search</button>
                     <button type="button" id="reset-button" class="reset-button">Reset</button>
                 </div>
-                <h3>5 Last Transactions</h3>
+                <h3>Your Search</h3>
                 <table id="order-table">
                     <thead>
                         <tr>
@@ -194,6 +195,15 @@
     </footer>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const queryParams = new URLSearchParams(window.location.search);
+            const searchQuery = queryParams.get('search');
+            if (searchQuery) {
+                document.getElementById('order-table').style.display = 'table';
+                document.getElementById('search-input').value = searchQuery;
+            }
+        });
+
         document.getElementById('search-button').addEventListener('click', function() {
             const query = document.getElementById('search-input').value;
             if (query) {

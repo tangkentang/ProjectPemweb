@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+\<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -79,7 +79,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php $i = $data->firstItem(); ?>
+                    <?php $i = $data->firstItem(); ?>
                     @foreach ($data as $item)
                         <tr>
                             <td>{{ $i }}</td>
@@ -96,11 +96,12 @@
                                 @endif
                             </td>
                         </tr>
-                    <?php $i++; ?>
+                        <?php $i++; ?>
                     @endforeach
                 </tbody>
             </table>
         </div>
+        {{ $data->links() }}
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
